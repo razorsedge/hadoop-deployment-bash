@@ -5,6 +5,7 @@ These are shell scripts which can install and configure [SSSD](https://pagure.io
 | Script                   | Use                                               |
 | ------------------------ | ------------------------------------------------- |
 | install_sssd-ad.sh       | Joins the node to an Active Directory domain.     |
+| install_sssd-ipa.sh      | Joins the node to an IPA domain.                  |
 | install_sssd-ldap+krb.sh | Authenticate via Kerberos and indentify via LDAP. |
 | install_sssd-ldap.sh     | Authenticate and indentify via LDAP.              |
 
@@ -23,6 +24,16 @@ PASSWORD=hahahahaha
 
 scp -p -o StrictHostKeyChecking=no ${GITREPO}/services/install_sssd-ad.sh ${HOST}:
 ssh -t $HOST "sudo bash -x install_sssd-ad.sh --domain $ADDOMAIN --batch <<< $PASSWORD"
+```
+
+### FreeIPA
+
+```
+GITREPO=~/git/teamclairvoyant/bash
+ADDOMAIN=HADOOP.COM
+
+scp -p -o StrictHostKeyChecking=no ${GITREPO}/services/install_sssd-ipa.sh ${HOST}:
+ssh -t $HOST "sudo bash -x install_sssd-ipa.sh --domain $ADDOMAIN"
 ```
 
 ### LDAP and Kerberos
